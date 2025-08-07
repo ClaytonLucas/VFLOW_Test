@@ -15,7 +15,6 @@ function getDadosFornecedor(){
     if (!razaoSocial) erros.push("Razão Social é obrigatória.");
     if (!nomeFantasia) erros.push("Nome Fantasia é obrigatório.");
      if (!cnpj) erros.push("CNPJ é obrigatório.");
-    // if (!cnpj || !validarCNPJ(cnpj)) erros.push("CNPJ inválido.");
 
     if (erros.length > 0) {
     alert("Erros encontrados:\n\n" + erros.join("\n"));
@@ -68,4 +67,31 @@ document.addEventListener("DOMContentLoaded", () => {
         e.target.value = value;
     });
 
+    document.getElementById("cep").addEventListener("blur", async function () {
+        const cep = this.value.replace(/\D/g, "");
+
+        if (cep.length !== 8) {
+            alert("CEP inválido.");
+            return;
+        }
+
+        try {
+            const response = await fetch(`https://viacep.com.br/ws/${cep}/json/`);
+            const data = await response.json();
+
+        if (data.erro) {
+            alert("CEP não encontrado.");
+            return;
+        }
+
+        document.getElementById("endereco").value = data.logradouro || "";
+        document.getElementById("bairro").value = data.bairro || "";
+        document.getElementById("municipio").value = data.localidade || "";
+        document.getElementById("estado").value = data.uf || "";
+
+        } catch (error) {
+        console.error("Erro ao buscar CEP:", error);
+        alert("Erro ao buscar o CEP.");
+        }
+    });
 });
