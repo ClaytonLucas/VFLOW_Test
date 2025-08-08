@@ -1,0 +1,132 @@
+
+.produtos-section {
+    background-color: #f8f9fa;
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 20px 0;
+}
+
+.section-title {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 15px;
+    margin: -20px -20px 20px -20px;
+    border-radius: 8px 8px 0 0;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+}
+
+.section-title i {
+    margin-right: 8px;
+}
+
+.separator{
+
+    background-color: white;
+    border: 1px solid #dee2e6;
+    border-radius: 6px;
+    padding: 15px;
+    margin-bottom: 15px;
+    position: relative;
+}
+.legend {
+    position: absolute;     
+    top: -10px;            
+    left: 10px;             
+    background-color: white; 
+    padding: 0 5px;         
+    margin: 0;              
+    font-weight: bold;   
+}
+.produto-item {
+    background-color: white;
+    border: 1px solid #dee2e6;
+    border-radius: 6px;
+    padding: 15px;
+    margin-bottom: 15px;
+    position: relative;
+}
+
+.action-area {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 15px;
+}
+
+.btn-adicionar {
+    background-color: #28a745;
+    border-color: #28a745;
+    width: 100%;
+    color: white;
+    display: flex;
+    align-items: center;
+}
+
+.btn-adicionar:hover {
+    background-color: #218838;
+    border-color: #1e7e34;
+}
+.form-label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 500;
+    color: #495057;
+    font-size: 14px;
+}
+
+.form-control {
+    width: 100%;
+    padding: 8px 12px;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+.form-control:focus {
+    border-color: #007bff;
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25);
+}
+
+.form-control::placeholder {
+    color: #6c757d;
+    opacity: 1;
+}
+.valor-total {
+    background-color: #e9ecef;
+    cursor: not-allowed;
+}
+
+.trash-icon {
+    color: #FFFFFF;
+    background-color: #ff0000;
+    border-radius: 5px;
+}
+.product-icon {
+    color: #FFFFFF;
+    background-color: #7a41bc;
+    border-radius: 50%;
+}
+
+@media (max-width: 768px) {
+    .col-md-3 {
+        flex: 0 0 100%;
+        margin-bottom: 15px;
+    }
+
+    .action-area {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 10px;
+    }
+
+    .text-muted {
+        text-align: center;
+    }
+}
