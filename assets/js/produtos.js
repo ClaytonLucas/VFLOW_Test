@@ -110,7 +110,14 @@ function getProdutosFornecedor() {
     const produtos = [];
     let erros = [];
 
-    document.querySelectorAll("#produtos-container .produto-item").forEach((produtoEl, index) => {
+    const produtoElements = document.querySelectorAll("#produtos-container .produto-item");
+
+    if (produtoElements.length === 0) {
+        alert("Adicione pelo menos um produto.");
+        return null;
+    }
+
+    produtoElements.forEach((produtoEl, index) => {
         const descricao = produtoEl.querySelector("input[name='descricao']").value.trim();
         const unidadeMedida = produtoEl.querySelector("select[name='unidadeMedida']").value;
         const quantidade = produtoEl.querySelector(".quantidade").value.trim();
@@ -121,12 +128,7 @@ function getProdutosFornecedor() {
         if (!unidadeMedida) erros.push(`Produto ${index + 1}: unidade de medida é obrigatória.`);
         if (!quantidade) erros.push(`Produto ${index + 1}: quantidade é obrigatória.`);
         if (!valorUnitario) erros.push(`Produto ${index + 1}: valor unitário é obrigatório.`);
-
-        if (erros.length > 0) {
-            alert("Erros nos produtos:\n\n" + erros.join("\n"));
-            return null;
-        }
-
+        
         produtos.push({
             descricao,
             unidadeMedida,
@@ -136,8 +138,13 @@ function getProdutosFornecedor() {
         });
     });
 
+    if (erros.length > 0) {
+        alert("Erros nos produtos:\n\n" + erros.join("\n"));
+        return null;
+    }
 
     return produtos;
 }
+
 
 

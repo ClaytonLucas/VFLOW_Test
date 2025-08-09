@@ -1,5 +1,3 @@
-
-
 const el = (id) => document.getElementById(id);
 
 function getDadosFornecedor() {
@@ -100,13 +98,14 @@ function getContatoFornecedor() {
 function getFormularioCompleto() {
   const dados = getDadosFornecedor();
   const contato = getContatoFornecedor();
-  // const endereco = getEnderecoFornecedor(); 
+  const endereco = getEnderecoFornecedor(); 
   const produtos = getProdutosFornecedor();
   const anexos = getAnexosFornecedor();
   if (!dados || !contato || !produtos || !anexos) return null;
 
   return {
     ...dados,
+    ...endereco,
     nomeContato: contato.nome,
     telefoneContato: contato.telefone,
     emailContato: contato.email,
@@ -129,6 +128,10 @@ document.addEventListener("DOMContentLoaded", () => {
     value = value.replace(/^(\d{2})(\d)/, "($1) $2");
     value = value.replace(/(\d{5})(\d)/, "$1-$2");
     e.target.value = value;
+  });
+  
+  el("numero").addEventListener("input", (e) => {
+    e.target.value = e.target.value.replace(/\D/g, "");
   });
 
   el("cep").addEventListener("input", (e) => {
