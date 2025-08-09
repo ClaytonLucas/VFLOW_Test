@@ -102,14 +102,16 @@ function getFormularioCompleto() {
   const contato = getContatoFornecedor();
   // const endereco = getEnderecoFornecedor(); 
   const produtos = getProdutosFornecedor();
-  if (dados && contato && produtos.length === 0) return null;
+  const anexos = getAnexosFornecedor();
+  if (!dados || !contato || !produtos || !anexos) return null;
 
   return {
     ...dados,
     nomeContato: contato.nome,
     telefoneContato: contato.telefone,
     emailContato: contato.email,
-    produtos   
+    produtos,
+    anexos   
   };
 }
 document.addEventListener("DOMContentLoaded", () => {
